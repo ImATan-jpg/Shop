@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURELUX | Women's Bottoms</title>
+    <style>
+        /* CSS stays the same as above to keep the theme consistent */
+        @import url('https://fonts.googleapis.com');
+        body { margin: 0; background: #000; color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(0, 0, 0, 0.95); position: fixed; width: 84%; top: 0; z-index: 1000; border-bottom: 1px solid #1a1a1a; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: bold; letter-spacing: 8px; color: #d4af37; text-decoration: none; }
+        nav a { color: #fff; text-decoration: none; margin-left: 35px; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; transition: 0.4s; }
+        nav a:hover { color: #d4af37; }
+        .section-header { margin-top: 180px; text-align: center; padding: 0 8%; }
+        .section-header h1 { font-family: 'Playfair Display', serif; font-size: 50px; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 10px; font-weight: 400; }
+        .section-header p { color: #d4af37; letter-spacing: 6px; font-size: 12px; text-transform: uppercase; }
+        .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; padding: 80px 8%; }
+        .card { background: #080808; padding: 20px; border: 1px solid #111; transition: 0.5s ease; text-align: center; }
+        .card:hover { border-color: #d4af37; transform: translateY(-10px); }
+        .card img { width: 100%; height: 450px; object-fit: cover; filter: brightness(0.8); transition: 0.5s; }
+        .card:hover img { filter: brightness(1); }
+        .product-name { font-size: 13px; letter-spacing: 3px; margin: 25px 0 10px; font-weight: 400; color: #fff; }
+        .price { color: #d4af37; font-size: 17px; font-weight: bold; letter-spacing: 1px; margin-bottom: 25px; }
+        .size-container { margin-bottom: 30px; }
+        .size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 10px; letter-spacing: 2px; color: #555; }
+        .chart-link { color: #d4af37; text-decoration: none; border-bottom: 1px solid #d4af37; }
+        .size-btns { display: flex; justify-content: center; gap: 10px; }
+        .size-btn { background: none; border: 1px solid #222; color: #fff; padding: 8px 16px; cursor: pointer; font-size: 11px; transition: 0.3s; }
+        .size-btn.selected { background: #d4af37; border-color: #d4af37; color: #000; font-weight: bold; }
+        .add-btn { width: 100%; background: none; border: 1px solid #d4af37; color: #d4af37; padding: 18px; font-weight: 600; letter-spacing: 4px; cursor: pointer; text-transform: uppercase; font-size: 11px; transition: 0.5s; }
+        .add-btn:hover { background: #d4af37; color: #000; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1); }
+        .footer { padding: 60px; text-align: center; background: #000; border-top: 1px solid #111; color: #444; letter-spacing: 4px; font-size: 10px; }
+    </style>
+</head>
+<body>
+     <header>
+        <div class="logo">AURELUX</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="mens.html">Mens</a>
+            <a href="women.html">Women</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="section-header">
+        <h1>WOMEN BOTTOMS</h1>
+        <p>THE ATELIER COLLECTION</p>
+    </div>
+
+    <section class="products" id="productGrid"></section>
+    <div class="footer">© 2026 AURELUX INTERNATIONAL. ALL RIGHTS RESERVED.</div>
+
+    <script>
+        const inventory = [
+            { price: 6800, img: "https://i.pinimg.com/1200x/87/a9/a0/87a9a0fbd83e5008a9eb969188b12bca.jpg" },
+            { price: 7400, img: "https://i.pinimg.com/1200x/da/6f/a1/da6fa14719d9998db8ca5d29a579cf8d.jpg" },
+            { price: 5900, img: "https://i.pinimg.com/736x/06/38/a2/0638a2fb41252499af83953ccf1b2d57.jpg" },
+            { price: 8200, img: "https://i.pinimg.com/736x/8a/9b/58/8a9b581382b852eb9fa15d40aa43dd7d.jpg" },
+            { price: 4600, img: "https://i.pinimg.com/736x/3c/31/68/3c316894554caaccde2d0dc0c8db7593.jpg" },
+            { price: 9500, img: "https://i.pinimg.com/1200x/04/f2/dd/04f2dd099ab9e49caaf9c05824e77c67.jpg" },
+            { price: 6300, img: "https://i.pinimg.com/736x/16/c4/02/16c40217c9d41a172d255d1db226db80.jpg" },
+            { price: 7800, img: "https://i.pinimg.com/1200x/b1/19/0f/b1190fe086024ca28cf225861c833af9.jpg" },
+            { price: 11200, img: "https://i.pinimg.com/736x/70/0e/72/700e72ec14dd105d8827dac9db8fc821.jpg" },
+            { price: 8900, img: "https://i.pinimg.com/1200x/9d/5b/67/9d5b67d37f8223933225284cf78bd0c8.jpg" },
+            { price: 5400, img: "https://i.pinimg.com/736x/9c/6b/41/9c6b41f2f99a0c063b73f96c86351bf2.jpg" },
+            { price: 12600, img: "https://i.pinimg.com/1200x/4f/d0/7d/4fd07d16e47b132015c42bc56027a9e5.jpg" },
+            { price: 6700, img: "https://i.pinimg.com/736x/a1/a7/8c/a1a78c8c778e4dd20cb6bb0474fbdfb0.jpg" },
+            { price: 4100, img: "https://i.pinimg.com/736x/b4/d0/96/b4d09694cfe7f56e3ed9db1fb0ddadec.jpg" },
+            { price: 13800, img: "https://i.pinimg.com/736x/74/b1/37/74b137c2a8a7822695a8439ecf11f06d.jpg" },
+            { price: 15200, img: "https://i.pinimg.com/736x/ff/10/b9/ff10b99439520465dead2e7ebbdb3338.jpg" },
+            { price: 9200, img: "https://i.pinimg.com/736x/66/69/78/666978986301bd9cd81f48c39d33489c.jpg" },
+            { price: 3800, img: "https://i.pinimg.com/736x/07/f2/6d/07f26ddbc146242930daf0d045b76d2d.jpg" },
+            { price: 8100, img: "https://i.pinimg.com/736x/8c/13/27/8c132721630b6ff5164823e7c1ef1ffc.jpg" }
+        ];
+
+        const grid = document.getElementById('productGrid');
+        inventory.forEach((item, index) => {
+            const name = `LUX FEMALE BOTTOM ${index + 1}`;
+            grid.innerHTML += `
+                <div class="card">
+                    <img src="${item.img}" onerror="this.src='https://via.placeholder.com'">
+                    <div class="product-name">${name}</div>
+                    <div class="price">₱${item.price.toLocaleString()}</div>
+                    <div class="size-container">
+                        <div class="size-header"><span>SELECT SIZE</span><a href="chart.html" class="chart-link">CHART</a></div>
+                        <div class="size-btns">
+                            <button class="size-btn" onclick="setSize(this)">24</button>
+                            <button class="size-btn" onclick="setSize(this)">26</button>
+                            <button class="size-btn" onclick="setSize(this)">28</button>
+                        </div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this, '${name}', ${item.price}, '${item.img}')">ADD TO CART</button>
+                </div>
+            `;
+        });
+
+        function setSize(btn) {
+            btn.parentElement.querySelectorAll('.size-btn').forEach(s => s.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function addToCart(btn, name, price, img) {
+            const sizeBtn = btn.parentElement.querySelector('.size-btn.selected');
+            if(!sizeBtn) { alert("Select size."); return; }
+            let cart = JSON.parse(localStorage.getItem('aurelux_cart')) || [];
+            cart.push({ name, price, img, size: sizeBtn.innerText });
+            localStorage.setItem('aurelux_cart', JSON.stringify(cart));
+            document.getElementById('cartCount').innerText = cart.length;
+            btn.innerText = "ADDED";
+            setTimeout(() => { btn.innerText = "ADD TO CART"; }, 2000);
+        }
+        document.getElementById('cartCount').innerText = (JSON.parse(localStorage.getItem('aurelux_cart')) || []).length;
+    </script>
+</body>
+</html>

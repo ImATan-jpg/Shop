@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURELUX | Shopping Bag</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            width: 84%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 35px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
+            transition: 0.4s;
+        }
+
+        nav a:hover { color: #d4af37; }
+
+        .cart-section {
+            max-width: 900px;
+            margin: 180px auto 100px;
+            padding: 0 20px;
+        }
+
+        .cart-header {
+            border-bottom: 1px solid #222;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .cart-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            letter-spacing: 5px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .cart-count {
+            color: #666;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 30px;
+            padding: 30px 0;
+            border-bottom: 1px solid #111;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border: 1px solid #222;
+        }
+
+        .item-details h3 {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            color: #888;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .item-meta span {
+            color: #d4af37;
+            margin-right: 15px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .qty-btn:hover { border-color: #d4af37; color: #d4af37; }
+
+        .item-price {
+            text-align: right;
+        }
+
+        .price-tag {
+            font-size: 16px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .remove-link {
+            font-size: 10px;
+            color: #555;
+            text-decoration: underline;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .remove-link:hover { color: #ff4d4d; }
+
+        .cart-summary {
+            margin-top: 60px;
+            background: #080808;
+            padding: 40px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #aaa;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            font-size: 20px;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 18px;
+            margin-top: 30px;
+            font-size: 12px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">AURELUX</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="mens.html">Mens</a>
+            <a href="women.html">Women</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="cart-section">
+        <div class="cart-header">
+            <h1>YOUR ATELIER BAG</h1>
+            <div class="cart-count" id="itemCount">0 ITEMS</div>
+        </div>
+
+        <div id="cartItemsContainer"></div>
+
+        <div class="cart-summary" id="summarySection" style="display:none;">
+            <div class="summary-row">
+                <span>SUBTOTAL</span>
+                <span id="subtotalDisplay">₱0</span>
+            </div>
+            <div class="summary-row">
+                <span>SHIPPING (PH)</span>
+                <span>FREE</span>
+            </div>
+            <div class="summary-row total">
+                <span>TOTAL</span>
+                <span id="totalDisplay" style="color: #d4af37;">₱0</span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Proceeding to Secure Checkout...')">SECURE CHECKOUT</button>
+            <button onclick="clearCart()" style="width:100%; background:none; border:none; color:#444; margin-top:15px; font-size:10px; letter-spacing:2px; cursor:pointer;">CLEAR BAG</button>
+        </div>
+        
+        <div id="emptyMsg" style="text-align:center; display:none; padding: 50px;">
+            <p style="letter-spacing: 3px; color: #666;">YOUR BAG IS EMPTY.</p>
+            <a href="mens.html" style="color:#d4af37; text-decoration:none; border-bottom:1px solid #d4af37; padding-bottom:5px; font-size:12px; letter-spacing:2px;">RETURN TO ATELIER</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+        });
+
+        function renderCart() {
+            const rawCart = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('cartItemsContainer');
+            const summary = document.getElementById('summarySection');
+            const emptyMsg = document.getElementById('emptyMsg');
+            const countLabel = document.getElementById('itemCount');
+            
+            container.innerHTML = '';
+            let grandTotal = 0;
+            let totalItems = 0;
+
+            if (rawCart.length === 0) {
+                summary.style.display = 'none';
+                emptyMsg.style.display = 'block';
+                countLabel.innerText = "0 ITEMS";
+                return;
+            }
+
+            const groupedCart = {};
+            
+            rawCart.forEach(item => {
+                const key = `${item.name}-${item.size}`;
+                if (!groupedCart[key]) {
+                    groupedCart[key] = { ...item, qty: 1 };
+                } else {
+                    groupedCart[key].qty += 1;
+                }
+            });
+
+            Object.values(groupedCart).forEach(item => {
+                const lineTotal = item.price * item.qty;
+                grandTotal += lineTotal;
+                totalItems += item.qty;
+
+                const html = `
+                    <div class="cart-item">
+                        <img src="${item.image}" onerror="this.src='https://via.placeholder.com/100'">
+                        <div class="item-details">
+                            <h3>${item.name}</h3>
+                            <div class="item-meta">
+                                <span>SIZE: ${item.size}</span>
+                                <span>QTY: ${item.qty}</span>
+                            </div>
+                        </div>
+                        <div class="item-price">
+                            <span class="price-tag">₱${lineTotal.toLocaleString()}</span>
+                            <span class="remove-link" onclick="removeItem('${item.name}', '${item.size}')">REMOVE</span>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+
+            summary.style.display = 'block';
+            emptyMsg.style.display = 'none';
+            document.getElementById('subtotalDisplay').innerText = `₱${grandTotal.toLocaleString()}`;
+            document.getElementById('totalDisplay').innerText = `₱${grandTotal.toLocaleString()}`;
+            countLabel.innerText = `${totalItems} ITEMS`;
+        }
+
+        function removeItem(name, size) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const newCart = cart.filter(item => !(item.name === name && item.size === size));
+            
+            localStorage.setItem('cart', JSON.stringify(newCart));
+            renderCart();
+        }
+
+        function clearCart() {
+            if(confirm("Clear your entire bag?")) {
+                localStorage.removeItem('cart');
+                renderCart();
+            }
+        }
+    </script>
+</body>
+</html>

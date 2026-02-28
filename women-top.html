@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURELUX | Women's Tops</title>
+    <style>
+        @import url('https://fonts.googleapis.com');
+        body { margin: 0; background: #000; color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(0, 0, 0, 0.95); position: fixed; width: 84%; top: 0; z-index: 1000; border-bottom: 1px solid #1a1a1a; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: bold; letter-spacing: 8px; color: #d4af37; text-decoration: none; }
+        nav a { color: #fff; text-decoration: none; margin-left: 35px; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; transition: 0.4s; }
+        nav a:hover { color: #d4af37; }
+        .section-header { margin-top: 180px; text-align: center; padding: 0 8%; }
+        .section-header h1 { font-family: 'Playfair Display', serif; font-size: 50px; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 10px; font-weight: 400; }
+        .section-header p { color: #d4af37; letter-spacing: 6px; font-size: 12px; text-transform: uppercase; }
+        .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; padding: 80px 8%; }
+        .card { background: #080808; padding: 20px; border: 1px solid #111; transition: 0.5s ease; text-align: center; }
+        .card:hover { border-color: #d4af37; transform: translateY(-10px); }
+        .card img { width: 100%; height: 450px; object-fit: cover; filter: brightness(0.8); transition: 0.5s; }
+        .card:hover img { filter: brightness(1); }
+        .product-name { font-size: 13px; letter-spacing: 3px; margin: 25px 0 10px; font-weight: 400; color: #fff; }
+        .price { color: #d4af37; font-size: 17px; font-weight: bold; letter-spacing: 1px; margin-bottom: 25px; }
+        .size-container { margin-bottom: 30px; }
+        .size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 10px; letter-spacing: 2px; color: #555; }
+        .chart-link { color: #d4af37; text-decoration: none; border-bottom: 1px solid #d4af37; }
+        .size-btns { display: flex; justify-content: center; gap: 10px; }
+        .size-btn { background: none; border: 1px solid #222; color: #fff; padding: 8px 16px; cursor: pointer; font-size: 11px; transition: 0.3s; }
+        .size-btn.selected { background: #d4af37; border-color: #d4af37; color: #000; font-weight: bold; }
+        .add-btn { width: 100%; background: none; border: 1px solid #d4af37; color: #d4af37; padding: 18px; font-weight: 600; letter-spacing: 4px; cursor: pointer; text-transform: uppercase; font-size: 11px; transition: 0.5s; }
+        .add-btn:hover { background: #d4af37; color: #000; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1); }
+        .footer { padding: 60px; text-align: center; background: #000; border-top: 1px solid #111; color: #444; letter-spacing: 4px; font-size: 10px; }
+    </style>
+</head>
+<body>
+     <header>
+        <div class="logo">AURELUX</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="mens.html">Mens</a>
+            <a href="women.html">Women</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="section-header">
+        <h1>WOMEN TOPS</h1>
+        <p>THE ATELIER COLLECTION</p>
+    </div>
+
+    <section class="products" id="productGrid"></section>
+    <div class="footer">© 2026 AURELUX INTERNATIONAL. ALL RIGHTS RESERVED.</div>
+
+    <script>
+        const inventory = [
+            { price: 4200, img: "https://i.pinimg.com/736x/fa/1f/c4/fa1fc46e95a93d87da2fa6b032786ce8.jpg" },
+            { price: 3800, img: "https://i.pinimg.com/736x/39/fb/0c/39fb0c7a3c3b19a76f015bca3cb9e1c0.jpg" },
+            { price: 4500, img: "https://i.pinimg.com/736x/f8/24/32/f82432cdb99c7489ff4b5a7b8d2475ad.jpg" },
+            { price: 5200, img: "https://i.pinimg.com/1200x/d5/ad/0e/d5ad0ebcef333358401c4e88aa9486a8.jpg" },
+            { price: 6100, img: "https://i.pinimg.com/1200x/4a/dc/78/4adc78eb292d2146fa5d9b3d16e1de68.jpg" },
+            { price: 3400, img: "https://i.pinimg.com/1200x/03/bc/92/03bc92fc216ba21d6c2b913dfd043bfe.jpg" },
+            { price: 4900, img: "https://i.pinimg.com/1200x/51/e7/c0/51e7c03ecb60d923b8630f0ba0b0af5d.jpg" },
+            { price: 5500, img: "https://i.pinimg.com/736x/36/30/d8/3630d885e10e2e4fd00ebe40c8597324.jpg" },
+            { price: 4700, img: "https://i.pinimg.com/736x/d3/ff/7f/d3ff7f804342a5c7df543695dc37f210.jpg" },
+            { price: 5800, img: "https://i.pinimg.com/1200x/04/18/34/041834b21d1208f368d832b1e80c4f55.jpg" },
+            { price: 6300, img: "https://i.pinimg.com/1200x/3c/4b/2d/3c4b2de5444f6c8e6fe2bffcec8d46ca.jpg" },
+            { price: 3900, img: "https://i.pinimg.com/736x/2e/f0/03/2ef003928fb9ace143286f4c156ed3a9.jpg" },
+            { price: 4100, img: "https://i.pinimg.com/736x/b5/8e/7d/b58e7d7e32b60ce68ebb007daf559aff.jpg" },
+            { price: 5600, img: "https://i.pinimg.com/736x/2d/33/05/2d33054e06f439934981ff972e72cdbd.jpg" },
+            { price: 4800, img: "https://i.pinimg.com/736x/81/7d/05/817d059b5a444e7fc17bdf04cb658219.jpg" },
+            { price: 3200, img: "https://i.pinimg.com/736x/01/56/d3/0156d390cf13e58fead7aefb8ab0bff1.jpg" },
+            { price: 5100, img: "https://i.pinimg.com/736x/d9/30/03/d930031629b5b2d13ab0c6e583f53596.jpg" },
+            { price: 5900, img: "https://i.pinimg.com/736x/84/db/62/84db6268da10072a0926d5dc72e84efa.jpg" },
+            { price: 4300, img: "https://i.pinimg.com/736x/3c/a5/dc/3ca5dca1202b968e3f3a41103c71190c.jpg" },
+            { price: 3600, img: "https://i.pinimg.com/736x/0d/8a/52/0d8a52f6762abf3ca5b39ccd7646558c.jpg" },
+            { price: 5400, img: "https://i.pinimg.com/736x/c4/3e/51/c43e5193c01aa20fd66c0755059ccd5a.jpg" },
+            { price: 6200, img: "https://i.pinimg.com/1200x/74/32/7a/74327a5aa46baf91d94bb0a395370246.jpg" },
+            { price: 6700, img: "https://i.pinimg.com/1200x/47/59/21/475921ca8d312fe09cd12f239b1223c8.jpg" },
+            { price: 3500, img: "https://i.pinimg.com/736x/33/0b/1b/330b1be033d4904f87216d79a3d20d87.jpg" },
+            { price: 4400, img: "https://i.pinimg.com/736x/5b/36/5e/5b365eac90efda9634b83a5df00cd209.jpg" },
+            { price: 5300, img: "https://i.pinimg.com/736x/93/2c/cd/932ccd803f5ed962c5c6f9f5c20d4a7b.jpg" }
+        ];
+
+        const grid = document.getElementById('productGrid');
+        inventory.forEach((item, index) => {
+            const name = `LUX FEMALE TOP ${index + 1}`;
+            grid.innerHTML += `
+                <div class="card">
+                    <img src="${item.img}" onerror="this.src='https://via.placeholder.com'">
+                    <div class="product-name">${name}</div>
+                    <div class="price">₱${item.price.toLocaleString()}</div>
+                    <div class="size-container">
+                        <div class="size-header"><span>SELECT SIZE</span><a href="chart.html" class="chart-link">CHART</a></div>
+                        <div class="size-btns">
+                            <button class="size-btn" onclick="setSize(this)">S</button>
+                            <button class="size-btn" onclick="setSize(this)">M</button>
+                            <button class="size-btn" onclick="setSize(this)">L</button>
+                        </div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this, '${name}', ${item.price}, '${item.img}')">ADD TO CART</button>
+                </div>
+            `;
+        });
+
+        function setSize(btn) {
+            btn.parentElement.querySelectorAll('.size-btn').forEach(s => s.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function addToCart(btn, name, price, img) {
+            const sizeBtn = btn.parentElement.querySelector('.size-btn.selected');
+            if(!sizeBtn) { alert("Select size."); return; }
+            let cart = JSON.parse(localStorage.getItem('aurelux_cart')) || [];
+            cart.push({ name, price, img, size: sizeBtn.innerText });
+            localStorage.setItem('aurelux_cart', JSON.stringify(cart));
+            document.getElementById('cartCount').innerText = cart.length;
+            btn.innerText = "ADDED";
+            setTimeout(() => { btn.innerText = "ADD TO CART"; }, 2000);
+        }
+        document.getElementById('cartCount').innerText = (JSON.parse(localStorage.getItem('aurelux_cart')) || []).length;
+    </script>
+</body>
+</html>

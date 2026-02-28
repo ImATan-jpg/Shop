@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURELUX | Premium Atelier</title>
+    <style>
+        @import url('https://fonts.googleapis.com');
+
+        body {
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(0, 0, 0, 0.95);
+            position: fixed;
+            width: 84%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            color: #d4af37;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 35px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
+            transition: 0.4s;
+        }
+
+        nav a:hover { color: #d4af37; }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            background: radial-gradient(circle, #111 0%, #000 100%);
+        }
+
+        .model-side {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .model-side img {
+            height: 90%;
+            object-fit: contain;
+            filter: brightness(0.7) contrast(1.1);
+            transition: 1.2s ease;
+        }
+
+        .hero:hover .model-side img { filter: brightness(1); transform: scale(1.03); }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 8vw, 85px);
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            margin: 0;
+            color: #fff;
+            text-shadow: 0 0 50px rgba(0,0,0,1);
+        }
+
+        .hero p {
+            color: #d4af37;
+            letter-spacing: 10px;
+            font-size: 12px;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-btns {
+            margin-top: 45px;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            pointer-events: auto;
+        }
+
+        .shop-btn {
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 18px 45px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 4px;
+            transition: 0.5s;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .shop-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* FEATURED 4 MODELS SECTION */
+        .featured-models {
+            padding: 120px 8%;
+            background: #000;
+        }
+
+        .section-label {
+            text-align: center;
+            color: #d4af37;
+            letter-spacing: 12px;
+            font-size: 13px;
+            margin-bottom: 70px;
+            font-weight: bold;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .model-card {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+        }
+
+        .model-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(0.6);
+            transition: 1s ease;
+        }
+
+        .model-card:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.08); }
+
+        .model-overlay {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .model-overlay span {
+            color: #fff;
+            letter-spacing: 4px;
+            font-size: 10px;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 5px;
+        }
+
+        .model-card:hover .model-overlay { opacity: 1; bottom: 60px; }
+
+        /* DESCRIPTION BOX */
+        .description-box {
+            padding: 120px 8%;
+            text-align: center;
+            background: #050505;
+        }
+
+        .description-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            letter-spacing: 8px;
+            color: #d4af37;
+            margin-bottom: 40px;
+        }
+
+        .description-box p {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2.2;
+            color: #aaa;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 60px;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid #111;
+            color: #444;
+            letter-spacing: 4px;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">AURELUX</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="mens.html">Mens</a>
+            <a href="women.html">Women</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="model-side">
+            <img src="https://i.ibb.co/Sw5TJ7LS/model2-removebg-preview.png" alt="Male Model">
+        </div>
+
+        <div class="hero-content">
+            <h1>LUXURY REDEFINED</h1>
+            <p>EST. 2026 • PREMIUM ATELIER</p>
+            <div class="hero-btns">
+                <a href="mens.html" class="shop-btn">Menswear</a>
+                <a href="women.html" class="shop-btn">Womenswear</a>
+            </div>
+        </div>
+
+        <div class="model-side">
+            <img src="https://i.ibb.co/g21bYhp/model1-removebg-preview.png
+https://i.ibb.co/Sw5TJ7LS/model2-removebg-preview.png" alt="Female Model">
+        </div>
+    </section>
+
+    <section class="featured-models">
+        <div class="section-label">THE ATELIER COLLECTION</div>
+        <div class="model-grid">
+            <div class="model-card">
+                <img src="https://i.pinimg.com/1200x/4e/bb/3a/4ebb3af461511640c29d217a49ca44fd.jpg">
+                <div class="model-overlay"><span>MENS TOPS</span></div>
+            </div>
+            <div class="model-card">
+                <img src="https://i.pinimg.com/736x/3e/66/66/3e6666b31c6ac1148a25ab6401864de8.jpg">
+                <div class="model-overlay"><span>WOMENS TOPS</span></div>
+            </div>
+            <div class="model-card">
+                <img src="https://i.pinimg.com/736x/07/a1/41/07a141585eb78feed12d496fefb5ba98.jpg">
+                <div class="model-overlay"><span>MENS BOTTOMS</span></div>
+            </div>
+            <div class="model-card">
+                <img src="https://i.pinimg.com/1200x/6d/ed/71/6ded71e6fcc19d11e6cd4068a8e3321b.jpg">
+                <div class="model-overlay"><span>WOMENS BOTTOMS</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="description-box">
+        <h2>THE PHILOSOPHY</h2>
+        <p>AURELUX is more than a label; it is a movement toward intentional luxury. We believe that true style is found in the silence of quality and the power of a perfect silhouette. Our Atelier combines old-world craftsmanship with modern street culture to redefine the standard of excellence.</p>
+    </div>
+
+    <div class="footer">
+        © 2026 AURELUX INTERNATIONAL. ALL RIGHTS RESERVED.
+    </div>
+
+</body>
+</html>

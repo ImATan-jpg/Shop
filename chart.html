@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURELUX | Size Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com');
+
+        :root {
+            --gold: #D4AF37;
+            --black: #050505;
+            --dark-grey: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- HEADER MATCH --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 60px;
+            background: var(--black);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-left: 30px;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* --- CONTENT --- */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--dark-grey);
+            padding-bottom: 10px;
+            margin-top: 60px;
+            color: var(--gold);
+        }
+
+        /* --- TABLE STYLE --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            text-transform: uppercase;
+            font-size: 11px;
+            color: #888;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--dark-grey);
+        }
+
+        td {
+            padding: 20px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--dark-grey);
+            font-weight: 300;
+        }
+
+        tr:hover td {
+            color: var(--gold);
+            background: #0a0a0a;
+        }
+
+        .unit-label {
+            font-size: 10px;
+            color: #555;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">AURELUX</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="mens.html">Mens</a>
+        <a href="women.html">Womens</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Sizing Guide</h1>
+    <p class="subtitle">EST. 2026 • PREMIUM ATELIER</p>
+
+    <!-- Menswear -->
+    <h2 class="section-title">Menswear</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>Chest Width</th>
+                <th>Body Length</th>
+                <th>Shoulder</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Small</td>
+                <td>21.5"</td>
+                <td>27.5"</td>
+                <td>18.5"</td>
+            </tr>
+            <tr>
+                <td>Medium</td>
+                <td>22.5"</td>
+                <td>28.5"</td>
+                <td>19.5"</td>
+            </tr>
+            <tr>
+                <td>Large</td>
+                <td>23.5"</td>
+                <td>29.5"</td>
+                <td>20.5"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Womenswear -->
+    <h2 class="section-title">Womenswear</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>Bust Width</th>
+                <th>Body Length</th>
+                <th>Waist</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Small</td>
+                <td>19.0"</td>
+                <td>22.5"</td>
+                <td>16.0"</td>
+            </tr>
+            <tr>
+                <td>Medium</td>
+                <td>20.5"</td>
+                <td>23.5"</td>
+                <td>17.5"</td>
+            </tr>
+            <tr>
+                <td>Large</td>
+                <td>22.0"</td>
+                <td>24.5"</td>
+                <td>19.0"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="unit-label">MEASUREMENTS ARE TAKEN FLAT. TOLERANCE +/- 0.5"</p>
+</div>
+
+</body>
+</html>
