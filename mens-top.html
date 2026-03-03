@@ -35,12 +35,7 @@
 <body>
      <header>
         <div class="logo">AURELUX</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="mens.html">Mens</a>
-            <a href="women.html">Women</a>
-            <a href="cart.html">Cart</a>
-        </nav>
+        <nav> <a href="index.html">Home</a> <a href="mens.html">Mens</a> <a href="women.html">Women</a> <a href="lookbook.html">Lookbook</a> <a href="journal.html">Journal</a> <a href="about.html">About</a> <a href="contact.html">Contact</a> <a href="philosophy.html">Philosophy</a> <a href="cart.html">Cart</a> </nav>
     </header>
 
     <div class="section-header">
@@ -52,7 +47,6 @@
     <div class="footer">© 2026 AURELUX INTERNATIONAL. ALL RIGHTS RESERVED.</div>
 
     <script>
-        // EVERY SINGLE ONE OF YOUR LINKS IS HERE BRO
         const inventory = [
             { price: 4500, img: "https://i.pinimg.com/736x/2f/60/e7/2f60e70b21104c6a327792b89c8b71af.jpg" },
             { price: 12800, img: "https://i.pinimg.com/736x/65/c6/79/65c679dcc8f89c66be426192a6915c75.jpg" },
@@ -126,7 +120,6 @@
             setTimeout(() => { btn.innerText = "ADD TO CART"; }, 2000);
         }
 
-        // Keep cart count accurate on load
         document.getElementById('cartCount').innerText = (JSON.parse(localStorage.getItem('aurelux_cart')) || []).length;
     </script>
 </body>
